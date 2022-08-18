@@ -31,7 +31,7 @@ SECRET_KEY = env('SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.37.123.193']
+ALLOWED_HOSTS = ['3.37.123.193', 'ec2-3-37-123-193.ap-northeast-2.compute.amazonaws.com']
 
 
 # Application definition
