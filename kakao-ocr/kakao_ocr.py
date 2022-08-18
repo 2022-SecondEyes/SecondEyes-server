@@ -55,7 +55,6 @@ def kakao_ocr(image_path: str, appkey: str):
 
 
 def call_kakao_ocr(image_path, app_key):
-    #app_key = dd5a8f54e9d0865ce1d2581f44844afc
 
     resize_impath = kakao_ocr_resize(image_path)
     if resize_impath is not None:
