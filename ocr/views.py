@@ -1,7 +1,7 @@
 import base64
 import datetime
+import kakao_ocr.kakao_ocr
 
-from django.core.files.storage import FileSystemStorage
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -19,4 +19,8 @@ def image_upload(request):
     with open("media/" + filename, 'wb') as f:
         f.write(image_data)
 
-    return Response(status=status.HTTP_200_OK)
+    data = kakao_ocr.kakao_ocr.call_kakao_ocr("media/" + filename)
+
+    return Response(data= data, status=status.HTTP_200_OK)
+
+

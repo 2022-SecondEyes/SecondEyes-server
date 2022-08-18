@@ -133,6 +133,7 @@ celerybeat.pid
 
 # Environments
 secondeyes_server/.env
+kakao_ocr/.env
 .venv
 env/
 venv/

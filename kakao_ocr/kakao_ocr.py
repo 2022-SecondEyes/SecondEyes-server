@@ -1,8 +1,16 @@
-import json
-
+import os
+import environ
 import cv2
 import requests
-import sys
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 LIMIT_PX = 1024
 LIMIT_BYTE = 1024*1024  # 1MB
@@ -54,7 +62,8 @@ def kakao_ocr(image_path: str, appkey: str):
     return requests.post(API_URL, headers=headers, files={"image": data})
 
 
-def call_kakao_ocr(image_path, app_key):
+def call_kakao_ocr(image_path):
+    app_key = env('APPKEY')
 
     resize_impath = kakao_ocr_resize(image_path)
     if resize_impath is not None:
@@ -63,6 +72,10 @@ def call_kakao_ocr(image_path, app_key):
 
     output = kakao_ocr(image_path, app_key).json()
     output_values = output.get('result')
-    output_list = list(o['recognition_words'] for o in output_values)
-    dic= {i : output_list[i] for i in range(0,len(output_list))}
+    output_list = []
+    for o in output_values:
+        output_list += o['recognition_words']
+    dic = { "words" : output_list }
     print("data = ", dic)
+
+    return dic
