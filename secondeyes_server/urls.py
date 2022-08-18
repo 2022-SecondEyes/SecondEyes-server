@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import ocr.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ocr', ocr.views.image_upload, name='ocr_img')
 ]

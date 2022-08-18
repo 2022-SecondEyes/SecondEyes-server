@@ -31,13 +31,14 @@ SECRET_KEY = env('SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.37.123.193', 'ec2-3-37-123-193.ap-northeast-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['localhost', '3.37.123.193', 'ec2-3-37-123-193.ap-northeast-2.compute.amazonaws.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'ocr',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
