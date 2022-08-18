@@ -15,7 +15,7 @@ def image_upload(request):
     except TypeError:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    filename = "ocrIMG" + str(datetime.datetime.now()) + ".jpg"
+    filename = "ocrIMG" + str(datetime.datetime.now().date()) + str(datetime.datetime.now().microsecond) + ".jpg"
     with open("media/" + filename, 'wb') as f:
         f.write(image_data)
 
